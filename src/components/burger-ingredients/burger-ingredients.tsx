@@ -7,7 +7,7 @@ import { useSelector } from '../../services/store';
 import { selectIngredients } from '../../services/ingredients/slice'
 
 export const BurgerIngredients: FC = () => {
-  const ingredients =  useSelector(selectIngredients)
+  const ingredients = useSelector(selectIngredients)
   const buns = ingredients.filter((ingredient) => (ingredient.type === 'bun'));
   const mains = ingredients.filter((ingredient) => (ingredient.type === 'main'));
   const sauces = ingredients.filter((ingredient) => (ingredient.type === 'sauce'));
@@ -48,7 +48,7 @@ export const BurgerIngredients: FC = () => {
     if (tab === 'sauce')
       titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
-  
+
 
   return (
     <BurgerIngredientsUI
@@ -65,6 +65,6 @@ export const BurgerIngredients: FC = () => {
       onTabClick={onTabClick}
     />
   );
- }
+}
 
 

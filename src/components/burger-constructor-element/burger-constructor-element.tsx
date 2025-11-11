@@ -5,8 +5,8 @@ import { useDispatch } from '../../services/store';
 import { deleteIngredient, DownIngredient, UpIngredient } from '../../services/constructor/slice'
 
 export const BurgerConstructorElement: FC<BurgerConstructorElementProps> = memo(
-    ({ ingredient, index, totalItems }) => {
-      const dispatch = useDispatch();
+  ({ ingredient, index, totalItems }) => {
+    const dispatch = useDispatch();
 
     const handleMoveDown = () => {
       dispatch(DownIngredient(index))

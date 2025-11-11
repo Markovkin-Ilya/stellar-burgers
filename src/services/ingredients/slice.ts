@@ -1,14 +1,14 @@
-import {TIngredient} from '../../utils/types'
-import {createSlice} from '@reduxjs/toolkit'
-import {getIngredients} from './actions'
+import { TIngredient } from '../../utils/types'
+import { createSlice } from '@reduxjs/toolkit'
+import { getIngredients } from './actions'
 
 type TIngredientsState = {
- ingredients: TIngredient[],
- isIngredientsLoading: boolean
+    ingredients: TIngredient[],
+    isIngredientsLoading: boolean
 }
 
 export const initialState: TIngredientsState = {
-    ingredients:[],
+    ingredients: [],
     isIngredientsLoading: false,
 }
 
@@ -22,10 +22,10 @@ export const ingredientsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-          .addCase(getIngredients.fulfilled, (state, action) => {
-            state.ingredients = action.payload;
-            state.isIngredientsLoading = true;
-          })
+            .addCase(getIngredients.fulfilled, (state, action) => {
+                state.ingredients = action.payload;
+                state.isIngredientsLoading = true;
+            })
     }
 })
 

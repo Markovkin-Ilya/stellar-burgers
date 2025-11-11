@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import styles from './app-header.module.css';
 import { TAppHeaderUIProps } from './type';
@@ -15,7 +15,7 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
       <div className={styles.menu_part_left}>
 
         <NavLink to='/' className={({ isActive }) => isActive ? styles.link : styles.link_active} >
-          {({isActive}) => (
+          {({ isActive }) => (
             <>
               <BurgerIcon type={isActive ? 'primary' : 'secondary'} />
               <p className='text text_type_main-default ml-2 mr-10'>Конструктор</p>
@@ -23,23 +23,27 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
           )}
         </NavLink>
 
-        <NavLink to='/feed' className={({isActive}) => isActive ? styles.link : styles.link_active}>
-          {({isActive}) => (
+        <NavLink to='/feed' className={({ isActive }) => isActive ? styles.link : styles.link_active}>
+          {({ isActive }) => (
             <>
               <ListIcon type={isActive ? 'primary' : 'secondary'} />
               <p className='text text_type_main-default ml-2'>Лента заказов</p>
             </>
           )}
         </NavLink>
+      </div>
 
-      </div>
-      <div className={styles.logo}>
-        <Logo className='' />
-      </div>
+      <NavLink to='/'>
+        <>
+          <div className={styles.logo}>
+            <Logo className='' />
+          </div>
+        </>
+      </NavLink>
+
       <div className={styles.link_position_last}>
-
-        <NavLink to='/profile' className={({isActive}) => isActive ? styles.link : styles.link_active}>
-          {({isActive}) => (
+        <NavLink to='/profile' className={({ isActive }) => isActive ? styles.link : styles.link_active}>
+          {({ isActive }) => (
             <>
               <ProfileIcon type={isActive ? 'primary' : 'secondary'} />
               <p className='text text_type_main-default ml-2'>
@@ -48,8 +52,8 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({ userName }) => (
             </>
           )}
         </NavLink>
-
       </div>
+
     </nav>
   </header>
 );

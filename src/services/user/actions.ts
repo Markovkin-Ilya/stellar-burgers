@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import {updateUserApi, loginUserApi, logoutApi, registerUserApi, TRegisterData, TLoginData} from '../../utils/burger-api'
-import { getCookie } from '../../utils/cookie'
+import { updateUserApi, loginUserApi, logoutApi, registerUserApi, TRegisterData, TLoginData } from '../../utils/burger-api'
+import { getCookie, setCookie } from '../../utils/cookie'
 import { getUserApi } from '../../utils/burger-api'
 import { setIsAuthChecked, setUser } from "./slice";
+
 
 export const login = createAsyncThunk(
     'user/login',
@@ -15,12 +16,14 @@ export const logout = createAsyncThunk(
     'user/logout',
     async () => {
         await logoutApi()
+        localStorage.setItem('refreshToken', '');
+        setCookie('accessToken', '');
     }
 )
 
 export const checkUserAuth = createAsyncThunk(
     'user/checkUserAuth',
-    async (_, {dispatch }) => {
+    async (_, { dispatch }) => {
         try {
             if (getCookie('accessToken')) {
                 const userData = await getUserApi();

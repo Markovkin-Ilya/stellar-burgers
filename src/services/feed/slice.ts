@@ -1,14 +1,14 @@
-import {TOrder} from '../../utils/types'
-import {createSlice} from '@reduxjs/toolkit'
-import {getFeed} from './actions'
+import { TOrder } from '../../utils/types'
+import { createSlice } from '@reduxjs/toolkit'
+import { getFeed } from './actions'
 
 type TFeedsState = {
- feeds: {total:number, totalToday: number} ,
- orders: TOrder[],
+    feeds: { total: number, totalToday: number },
+    orders: TOrder[],
 }
 
 export const initialState: TFeedsState = {
-    feeds: {total: 0, totalToday: 0},
+    feeds: { total: 0, totalToday: 0 },
     orders: [],
 }
 
@@ -18,7 +18,7 @@ export const feedSlice = createSlice({
     reducers: {},
     selectors: {
         selectFeeds: state => state.feeds,
-        selectOrders: state => state.orders
+        selectFeedOrders: state => state.orders
     },
     extraReducers: (builder) => {
         builder
@@ -28,10 +28,10 @@ export const feedSlice = createSlice({
                 state.orders = action.payload.orders
             })
             .addCase(getFeed.pending, (state) => {
-                state.feeds = {total: 0, totalToday: 0};
+                state.feeds = { total: 0, totalToday: 0 };
                 state.orders = []
             })
     }
 })
 
-export const { selectFeeds, selectOrders } = feedSlice.selectors;
+export const { selectFeeds, selectFeedOrders } = feedSlice.selectors;

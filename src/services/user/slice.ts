@@ -1,5 +1,5 @@
 import { TUser } from "@utils-types"
-import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { login, logout, register, update } from './actions'
 import { setCookie } from '../../utils/cookie'
 
@@ -51,5 +51,5 @@ export const userSlice = createSlice({
     }
 })
 
-export const {selectUser, selectIsAuthChecked} = userSlice.selectors;
-export const { setIsAuthChecked, setUser} = userSlice.actions;
+export const { selectUser, selectIsAuthChecked } = userSlice.selectors;
+export const { setIsAuthChecked, setUser } = userSlice.actions;
