@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62% </span>
+                <span class="strong">74.46% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/50</span>
+                <span class='fraction'>35/47</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62% </span>
+                <span class="strong">74.46% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>31/50</span>
+                <span class='fraction'>35/47</span>
             </div>
         
             
@@ -110,11 +110,7 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -124,14 +120,15 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -154,68 +151,59 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createAsyncThunk } from "@reduxjs/toolkit";
-import { updateUserApi, loginUserApi, logoutApi, registerUserApi, TRegisterData, TLoginData } from '../../utils/burger-api'
-import { getCookie, setCookie } from '../../utils/cookie'
-import { getUserApi } from '../../utils/burger-api'
-import { setIsAuthChecked, setUser } from "./slice";
-&nbsp;
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  updateUserApi,
+  loginUserApi,
+  logoutApi,
+  registerUserApi,
+  TRegisterData,
+  TLoginData
+} from '../../utils/burger-api';
+import { getCookie, setCookie } from '../../utils/cookie';
+import { getUserApi } from '../../utils/burger-api';
+import { setIsAuthChecked, setUser } from './slice';
 &nbsp;
 export const login = createAsyncThunk(
-    'user/login',
-    async (loginData: TLoginData) =&gt; {
-<span class="cstat-no" title="statement not covered" >        return loginUserApi(loginData)</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-)
+  'user/login',
+  async (loginData: TLoginData) =&gt; loginUserApi(loginData)
+);
 &nbsp;
-export const logout = createAsyncThunk(
-    'user/logout',
-    async () =&gt; {
-<span class="cstat-no" title="statement not covered" >        await logoutApi()</span>
-<span class="cstat-no" title="statement not covered" >        localStorage.setItem('refreshToken', '');</span>
-<span class="cstat-no" title="statement not covered" >        setCookie('accessToken', '');</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-)
+export const logout = createAsyncThunk('user/logout', async () =&gt; {
+<span class="cstat-no" title="statement not covered" >  await logoutApi();</span>
+<span class="cstat-no" title="statement not covered" >  localStorage.setItem('refreshToken', '');</span>
+<span class="cstat-no" title="statement not covered" >  setCookie('accessToken', '');</span>
+});
 &nbsp;
 export const checkUserAuth = createAsyncThunk(
-    'user/checkUserAuth',
-    async (_, { dispatch }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        try {</span>
-<span class="cstat-no" title="statement not covered" >            if (getCookie('accessToken')) {</span>
-<span class="cstat-no" title="statement not covered" >                const userData = await getUserApi();</span>
-<span class="cstat-no" title="statement not covered" >                dispatch(setUser(userData.user));</span>
-<span class="cstat-no" title="statement not covered" >            }</span>
-<span class="cstat-no" title="statement not covered" >        } finally {</span>
-<span class="cstat-no" title="statement not covered" >            dispatch(setIsAuthChecked(true))</span>
-<span class="cstat-no" title="statement not covered" >        }</span>
+  'user/checkUserAuth',
+  async (_, { dispatch }) =&gt; {
+<span class="cstat-no" title="statement not covered" >    try {</span>
+<span class="cstat-no" title="statement not covered" >      if (getCookie('accessToken')) {</span>
+<span class="cstat-no" title="statement not covered" >        const userData = await getUserApi();</span>
+<span class="cstat-no" title="statement not covered" >        dispatch(setUser(userData.user));</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >    } finally {</span>
+<span class="cstat-no" title="statement not covered" >      dispatch(setIsAuthChecked(true));</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-)
+<span class="cstat-no" title="statement not covered" >  }</span>
+);
 &nbsp;
 export const register = createAsyncThunk(
-    'user/register',
-    async (data: TRegisterData) =&gt; {
-<span class="cstat-no" title="statement not covered" >        return registerUserApi(data)</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-)
+  'user/register',
+  async (data: TRegisterData) =&gt; registerUserApi(data)
+);
 &nbsp;
 export const update = createAsyncThunk(
-    'user/update',
-    async (data: TRegisterData) =&gt; {
-<span class="cstat-no" title="statement not covered" >        return updateUserApi(data)</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-)
-&nbsp;
+  'user/update',
+  async (data: TRegisterData) =&gt; updateUserApi(data)
+);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -223,7 +211,7 @@ export const update = createAsyncThunk(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-11-19T15:27:59.601Z
+                at 2025-11-20T09:32:27.361Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

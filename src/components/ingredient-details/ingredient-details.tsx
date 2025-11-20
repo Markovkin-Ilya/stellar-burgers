@@ -8,8 +8,10 @@ import { selectIngredients } from '../../services/ingredients/slice';
 export const IngredientDetails: FC = () => {
   /** TODO: взять переменную из стора */
   const params = useParams();
-  const ingredients = useSelector(selectIngredients)
-  const ingredient = ingredients?.filter((ingredient) => (ingredient._id === params.ingredientId))
+  const ingredients = useSelector(selectIngredients);
+  const ingredient = ingredients?.filter(
+    (ingredient) => ingredient._id === params.ingredientId
+  );
   if (ingredient) {
     const ingredientData = ingredient[0];
 

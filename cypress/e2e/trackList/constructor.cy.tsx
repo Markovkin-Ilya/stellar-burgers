@@ -6,10 +6,10 @@ describe('проверяем constructor', function () {
             JSON.stringify("test-refreshToken")
         );
         cy.setCookie("accessToken", "test-accessToken");
-        cy.intercept("GET", "https://norma.education-services.ru/api/ingredients", { fixture: "ingredients" });
-        cy.intercept("GET", "https://norma.education-services.ru/api/auth/user", { fixture: "user" });
-        cy.intercept("POST", "https://norma.education-services.ru/api/orders", { fixture: "order" });
-        cy.visit('http://localhost:4000');
+        cy.intercept("GET", "api/ingredients", { fixture: "ingredients" });
+        cy.intercept("GET", "api/auth/user", { fixture: "user" });
+        cy.intercept("POST", "api/orders", { fixture: "order" });
+        cy.visit('/');
     })
 
     it('добавление ингредиента в список заказа', function () {
@@ -20,6 +20,7 @@ describe('проверяем constructor', function () {
     it('открытие и закрытие модального окна', function () {
         cy.get("[data-cy=ingredient-2]").click()
         cy.get("[data-cy=modal]").should('be.visible')
+        cy.get("[data-cy=ingredient-in-modal]").should('be.visible')
         cy.get("[data-cy=closeModal]").click()
         cy.get("[data-cy=modal]").should('not.exist')
     });
@@ -35,5 +36,10 @@ describe('проверяем constructor', function () {
         cy.get("[data-cy=ConstructorElement]").should('not.exist')
     });
 
-
+    afterEach(() => {
+        window.localStorage.setItem("refreshToken",
+            JSON.stringify("")
+        );
+        cy.setCookie("accessToken", "");
+    })
 });

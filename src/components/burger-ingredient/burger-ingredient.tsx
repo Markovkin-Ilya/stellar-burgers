@@ -11,7 +11,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const dispatch = useDispatch();
 
     const handleAdd = () => {
-      dispatch(setIngredient(ingredient))
+      dispatch(setIngredient(ingredient));
     };
 
     return (
@@ -20,7 +20,6 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
         count={count}
         locationState={{ background: location }}
         handleAdd={handleAdd}
-        
       />
     );
   }
