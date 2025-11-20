@@ -1,31 +1,35 @@
-import { TOrder } from '../../utils/types'
-import { createSlice } from '@reduxjs/toolkit'
-import { getOrders } from './actions'
+import { TOrder } from '../../utils/types';
+import { createSlice } from '@reduxjs/toolkit';
+import { getOrders } from './actions';
 
 type TProfileOrdersState = {
-    orders: TOrder[],
-}
+  orders: TOrder[];
+};
 
 export const initialState: TProfileOrdersState = {
-    orders: [],
-}
+  orders: []
+};
 
 export const profileOrdersSlice = createSlice({
-    name: 'profileOrders',
-    initialState,
-    reducers: {},
-    selectors: {
-        selectProfileOrders: state => state.orders
-    },
-    extraReducers: (builder) => {
-        builder
-            .addCase(getOrders.fulfilled, (state, action) => {
-                state.orders = action.payload
-            })
-            .addCase(getOrders.pending, (state) => {
-                state.orders = []
-            })
-    }
-})
+  name: 'profileOrders',
+  initialState,
+  reducers: {},
+  selectors: {
+    selectProfileOrders: (state) => state.orders
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(getOrders.fulfilled, (state, action) => {
+        state.orders = action.payload;
+      })
+      .addCase(getOrders.pending, (state) => {
+        state.orders = [];
+      })
+      .addCase(getOrders.rejected, (state, action) => {
+        state.orders = [];
+        console.log(action.payload);
+      });
+  }
+});
 
 export const { selectProfileOrders } = profileOrdersSlice.selectors;

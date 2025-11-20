@@ -8,9 +8,8 @@ import { selectProfileOrders } from '../../services/profile-orders/slice';
 export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();
 
-
   useEffect(() => {
-    dispatch(getOrders())
+    dispatch(getOrders());
   }, []);
 
   /** TODO: взять переменную из стора */

@@ -11,7 +11,7 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const dispatch = useDispatch();
 
     const handleAdd = () => {
-      dispatch(setIngredient(ingredient))
+      dispatch(setIngredient(ingredient));
     };
 
     return (

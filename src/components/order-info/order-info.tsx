@@ -4,11 +4,11 @@ import { OrderInfoUI } from '../ui/order-info';
 import { useParams } from 'react-router-dom';
 import { TIngredient } from '@utils-types';
 import { useDispatch, useSelector } from '../../services/store';
-import { selectIngredients } from '../../services/ingredients/slice'
-import { selectFeedOrders } from '../../services/feed/slice'
-import { getFeed } from '../../services/feed/actions'
-import { getOrders } from '../../services/profile-orders/actions'
-import { selectProfileOrders } from '../../services/profile-orders/slice'
+import { selectIngredients } from '../../services/ingredients/slice';
+import { selectFeedOrders } from '../../services/feed/slice';
+import { getFeed } from '../../services/feed/actions';
+import { getOrders } from '../../services/profile-orders/actions';
+import { selectProfileOrders } from '../../services/profile-orders/slice';
 
 export const OrderInfo: FC = () => {
   const params = useParams();
@@ -16,12 +16,14 @@ export const OrderInfo: FC = () => {
   const ordersFeed = useSelector(selectFeedOrders);
   const ordersProfile = useSelector(selectProfileOrders);
   const allOrders = [...ordersFeed, ...ordersProfile];
-  const order = allOrders?.filter((order) => (`${order.number}` === params.number));
+  const order = allOrders?.filter(
+    (order) => `${order.number}` === params.number
+  );
 
   useEffect(() => {
     if (order.length === 0) {
-      dispatch(getFeed())
-      dispatch(getOrders())
+      dispatch(getFeed());
+      dispatch(getOrders());
     }
   }, []);
 
@@ -79,5 +81,4 @@ export const OrderInfo: FC = () => {
 
     return <OrderInfoUI orderInfo={orderInfo} />;
   }
-
 };
